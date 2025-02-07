@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - UiTM Student E-Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #a1b2c0, #a27db1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-control {
+            border-radius: 20px;
+        }
+        .btn-primary {
+            border-radius: 20px;
+            background: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h3 class="text-center mb-3"><i class="fas fa-user-circle"></i> Admin Login</h3>
+        <form id="login-form">
+            <div class="mb-3">
+                <label for="username" class="form-label"><i class="fas fa-user"></i> Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter admin username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter admin password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        &copy; 2025 UiTM Student E-Profile. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const adminUsername = "admin";
+            const adminPassword = "admin123";
+
+            const username = document.getElementById("username").value.toLowerCase();
+            const password = document.getElementById("password").value;
+
+            if (username === adminUsername && password === adminPassword) {
+                alert("Login successful! Redirecting to Profiles Page.");
+                sessionStorage.setItem("admin", "true");
+                window.location.href = "index.html";
+            } else {
+                alert("Unauthorized access! Only admin can log in.");
+            }
+        });
+    </script>
+
+</body>
+</html>
